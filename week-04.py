@@ -1,3 +1,27 @@
+def fillupbyte(input, byte=8):
+    '''
+    >>> fillupbyte('011')
+    '00000011'
+    >>> fillupbyte('1')
+    '00000001'
+    >>> fillupbyte('10111')
+    '00010111'
+    >>> fillupbyte('11100111')
+    '11100111'
+    >>> fillupbyte('111001111')
+    '0000000111001111'
+    '''
+
+    divModRes = divmod(len(input), byte)
+    byte_result = byte
+    if (divModRes[0] != 0):
+        if (divModRes[1] != 0):
+            byte_result = divModRes[0] * byte + byte
+
+    result = input.rjust(byte_result, '0')
+    return result
+
+
 def hex2string (input):
     '''
     >>> hex2string('61')
